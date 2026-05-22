@@ -13,10 +13,7 @@ def register_cors(app: FastAPI) -> None:
     async def cors_check(request: Request, call_next):
         origin = request.headers.get("origin", "")
         if origin and origin not in config.ALLOWED_ORIGIN:
-            return JSONResponse(
-                status_code=403,
-                content={"message": "Not allowed", "data": {}}
-            )
+            return JSONResponse(status_code=403, content={"message": "Not allowed", "data": {}})
         return await call_next(request)
 
     app.add_middleware(

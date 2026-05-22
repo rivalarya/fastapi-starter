@@ -6,6 +6,7 @@ from fastapi import APIRouter, FastAPI
 
 def register_all_routes(app: FastAPI) -> None:
     import src.domains as domains_pkg
+
     print(f"Domains path: {domains_pkg.__path__}")
     for _, domain_name, is_pkg in pkgutil.iter_modules(domains_pkg.__path__):
         print(f"Found: {domain_name}, is_pkg: {is_pkg}")
