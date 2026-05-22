@@ -1,6 +1,7 @@
 from fastapi import FastAPI, Request
-from fastapi.responses import JSONResponse
 from fastapi.exceptions import RequestValidationError
+from fastapi.responses import JSONResponse
+
 from src.config import config
 from src.middlewares import register_cors, register_rate_limiter
 from src.utils import register_all_routes

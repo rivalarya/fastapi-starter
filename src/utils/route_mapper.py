@@ -1,7 +1,7 @@
 import importlib
 import pkgutil
-from fastapi import FastAPI
-from fastapi import APIRouter
+
+from fastapi import APIRouter, FastAPI
 
 
 def register_all_routes(app: FastAPI) -> None:

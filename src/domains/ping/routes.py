@@ -1,6 +1,8 @@
 from fastapi import APIRouter
-from .handler import get_ping, post_ping
+
 from src.schemas import StandardResponse
+
+from .handler import get_ping, post_ping
 
 router = APIRouter()
 

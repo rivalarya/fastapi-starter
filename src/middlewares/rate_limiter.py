@@ -1,9 +1,11 @@
+import time
+from collections import defaultdict
+
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
+
 from src.config import config
-from collections import defaultdict
-import time
 
 banned_ips: set[str] = set()
 request_counts: dict[str, list[float]] = defaultdict(list)

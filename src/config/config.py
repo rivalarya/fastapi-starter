@@ -1,4 +1,5 @@
 import os
+
 from dotenv import load_dotenv
 
 _env_file = ".env.test" if os.getenv("APP_ENV") == "test" else ".env"
