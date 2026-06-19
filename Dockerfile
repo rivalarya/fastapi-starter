@@ -1,17 +1,16 @@
-FROM python:3.12-alpine AS builder
+FROM python:3.13-slim AS builder
 WORKDIR /app
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY pyproject.toml .
+RUN pip install --no-cache-dir .
 
-FROM python:3.12-alpine AS runner
+FROM python:3.13-slim AS runner
 WORKDIR /app
 ENV APP_ENV=production
 
 RUN addgroup --system --gid 1001 fastapi-starter \
- && adduser --system --uid 1001 appuser \
- && chown -R appuser:fastapi-starter /app
-
-COPY --chown=appuser:fastapi-starter --from=builder /usr/local/lib/python3.12 /usr/local/lib/python3.12
+    && adduser --system --uid 1001 appuser \
+    && chown -R appuser:fastapi-starter /app
+COPY --chown=appuser:fastapi-starter --from=builder /usr/local/lib/python3.13 /usr/local/lib/python3.13
 COPY --chown=appuser:fastapi-starter --from=builder /usr/local/bin /usr/local/bin
 COPY --chown=appuser:fastapi-starter . .
 
