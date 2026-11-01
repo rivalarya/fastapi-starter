@@ -1,9 +1,9 @@
-FROM python:3.13-slim AS builder
+FROM python:3.15-slim@sha256:94d3426f1def7db4a106a232ac121bfd975393e5dfd40a619b955fae45fe7913 AS builder
 WORKDIR /app
 COPY pyproject.toml .
 RUN pip install --no-cache-dir .
 
-FROM python:3.13-slim AS runner
+FROM python:3.15-slim@sha256:94d3426f1def7db4a106a232ac121bfd975393e5dfd40a619b955fae45fe7913 AS runner
 WORKDIR /app
 ENV APP_ENV=production
 
